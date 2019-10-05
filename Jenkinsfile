@@ -18,10 +18,10 @@ pipeline {
     }
     stage('BuildContainer') {
       steps {
-//        sh 'docker build -t gradle-simple:latest .'
-        script {
-          docker.build registry + ":$BUILD_NUMBER"
-        }
+        sh 'docker build -t gradle-simple:latest .'
+//        script {
+//          docker.build registry + ":$BUILD_NUMBER"
+//        }
       }
     }
   }
