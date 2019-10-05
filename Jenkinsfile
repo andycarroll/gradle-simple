@@ -3,6 +3,7 @@ pipeline {
   environment {
     registry = "andycarroll00/gradle-simple"
     registryCredential = 'DockerHub'
+    img = ''
   }
   stages {
     stage('Build') {
@@ -20,9 +21,18 @@ pipeline {
       steps {
 //        sh 'docker build -t gradle-simple:latest .'
         script {
-         docker.build registry + ":$BUILD_NUMBER"
+         img = docker.build registry + ":$BUILD_NUMBER"
         }
       }
     }
+stage('Deploy Image') {
+  steps{
+    script {
+      docker.withRegistry( '', registryCredential ) {
+        img.push()
+      }
+    }
+  }
+}
   }
 }
