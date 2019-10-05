@@ -1,5 +1,9 @@
 pipeline {
   agent any
+  environment {
+    registry = "andycarroll00/gradle-simple"
+    registryCredential = 'DockerHub'
+  }
   stages {
     stage('Build') {
       agent {
@@ -14,7 +18,10 @@ pipeline {
     }
     stage('BuildContainer') {
       steps {
-        sh 'docker build -t gradle-simple:latest .'
+//        sh 'docker build -t gradle-simple:latest .'
+        script {
+          docker.build registry + ":$BUILD_NUMBER"
+        }
       }
     }
   }
