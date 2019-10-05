@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'gradle build -w /home/gradle/project'
+                sh 'gradle -w /home/gradle/project build'
             }
         }
     }
