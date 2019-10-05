@@ -14,7 +14,7 @@ pipeline {
     }
     stage('BuildContainer') {
       steps {
-        sh 'docker build -t gradle-simple:latest'
+        sh 'docker build -t gradle-simple:latest .'
       }
     }
   }
