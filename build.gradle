@@ -1,6 +1,7 @@
 apply plugin: 'java'
 apply plugin: 'maven'
 
+version = "1.0-SNAPSHOT"
 group = 'com.github.jitpack'
 
 sourceCompatibility = 1.8 // java 8
