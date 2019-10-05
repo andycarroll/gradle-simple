@@ -1,4 +1,5 @@
 pipeline {
+    agent any
     stages {
         stage('Build') {
           agent {
@@ -12,7 +13,8 @@ pipeline {
             }
         }
         stage('BuildContainer') {
-          img = docker.build("gradle-simple")
+          steps {
+            sh 'docker build -t gradle-simple:latest'
         }
     }
 }
